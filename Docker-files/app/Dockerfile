@@ -4,6 +4,9 @@ RUN git clone https://github.com/maheshreddypoliki5203/vprofile-project.git
 RUN cd vprofile-project && git checkout docker && mvn install
 
 FROM tomcat:9-jre11
+
+LABEL "Author"="Mahesh"
+
 COPY --from=BUILD_IMAGE vprofile-project/target/vprofile-v2.war /usr/local/tomcat/webapps/ROOT.war
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
